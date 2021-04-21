@@ -1,0 +1,14 @@
+{
+  "name": "broccoli-tutorial",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "broccoli": "^2.0.0-beta.4",
+    "broccoli-cli": "^1.0.0"
+  },
+  "scripts": {
+    "build": "broccoli build --overwrite",
+    "serve": "broccoli serve"
+  }
+}
