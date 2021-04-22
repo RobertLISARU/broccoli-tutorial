@@ -129,3 +129,9 @@ tmp/
 temp/
 
 # End of https://www.toptal.com/developers/gitignore/api/node
+DEBUG/my-tree/index.html
+DEBUG/my-tree/assets/app.css
+DEBUG/my-tree/assets/app.css.map
+DEBUG/my-tree/assets/app.js
+DEBUG/my-tree/assets/app.js.map
+DEBUG/my-tree/images/broccoli-logo.png

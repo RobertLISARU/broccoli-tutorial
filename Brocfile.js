@@ -6,6 +6,8 @@ const Rollup = require('broccoli-rollup')
 const nodeResolve = require('rollup-plugin-node-resolve')
 const commonjs = require('rollup-plugin-commonjs')
 const LiveReload = require('broccoli-livereload')
+const log = require('broccoli-stew').log
+const debug = require('broccoli-stew').debug
 
 const appRoot = "app"
 
@@ -40,6 +42,10 @@ let js = new Rollup(appRoot, {
     }
 })
 
+js = log(js, {
+    output: 'js',
+})
+
 const css = compileSass(
     [appRoot],
     "styles/app.scss",
@@ -59,5 +65,11 @@ let tree = merge([html, js, css, public], { annotation: "Final output" })
 tree = new LiveReload(tree, {
     target: 'index.html',
 })
+
+tree = log(tree, {
+    output: 'tree',
+})
+
+tree = debug(tree, 'my-tree')
 
 module.exports = tree
