@@ -4,11 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "broccoli": "^2.0.0-beta.4",
-    "broccoli-cli": "^1.0.0"
+    "broccoli": "^3.5.1",
+    "broccoli-cli": "^1.0.0",
+    "broccoli-funnel": "^3.0.4",
+    "broccoli-merge-trees": "^4.2.0"
   },
   "scripts": {
-    "build": "broccoli build --overwrite",
+    "build": "broccoli build",
     "serve": "broccoli serve"
   }
 }
