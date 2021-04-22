@@ -5,13 +5,14 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.13.16",
-    "@babel/preset-env": "^7.13.15",
     "broccoli": "^3.5.1",
-    "broccoli-babel-transpiler": "^7.8.0",
     "broccoli-cli": "^1.0.0",
     "broccoli-funnel": "^3.0.4",
     "broccoli-merge-trees": "^4.2.0",
+    "broccoli-rollup": "^2.1.1",
     "broccoli-sass-source-maps": "^4.0.0",
+    "rollup": "^0.66.2",
+    "rollup-plugin-babel": "^4.0.3",
     "sass": "^1.32.11"
   },
   "scripts": {

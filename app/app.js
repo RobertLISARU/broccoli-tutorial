@@ -1,10 +1,4 @@
-const message = 'Eat your greens!'
+import foo from './foo'
+import { fooNamed } from './foo'
 
-function foo() {
-    setTimeout(() => {
-        console.log(message)
-        console.log(this)
-    })
-}
-
-new foo()
+console.log(foo)
