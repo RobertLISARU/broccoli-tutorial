@@ -8,6 +8,8 @@ const commonjs = require('rollup-plugin-commonjs')
 const LiveReload = require('broccoli-livereload')
 const log = require('broccoli-stew').log
 const debug = require('broccoli-stew').debug
+const esLint = require("broccoli-lint-eslint")
+const sassLint = require("broccoli-sass-lint")
 
 const appRoot = "app"
 
@@ -17,7 +19,11 @@ const html = funnel(appRoot, {
     annotation: 'Index file',
 })
 
-let js = new Rollup(appRoot, {
+let js = esLint(appRoot, {
+    persist: true
+})
+
+js = new Rollup(appRoot, {
     inputFiles: ["**/*.js"],
     annotation: "JS Transformation",
     rollup: {
@@ -46,7 +52,11 @@ js = log(js, {
     output: 'js',
 })
 
-const css = compileSass(
+let css = sassLint(appRoot + '/styles', {
+    disableTestGenerator: true,
+})
+
+css = compileSass(
     [appRoot],
     "styles/app.scss",
     "assets/app.css",
@@ -56,11 +66,11 @@ const css = compileSass(
         annotation: "Sass files"
     })
 
-const public = funnel('public', {
+const publicFolder = funnel('public', {
     annotation: "Public files"
 })
 
-let tree = merge([html, js, css, public], { annotation: "Final output" })
+let tree = merge([html, js, css, publicFolder], { annotation: "Final output" })
 
 tree = new LiveReload(tree, {
     target: 'index.html',
