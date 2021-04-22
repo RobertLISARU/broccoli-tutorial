@@ -14,6 +14,7 @@ const env = require('broccoli-env').getEnv() || 'development'
 const isProduction = env === 'production'
 const CleanCss = require('broccoli-clean-css')
 const uglify = require('rollup-plugin-uglify')
+const assetRev = require('broccoli-asset-rev')
 
 console.log('Environment: ' + env)
 
@@ -60,10 +61,6 @@ js = new Rollup(appRoot, {
     }
 })
 
-js = log(js, {
-    output: 'js',
-})
-
 let css = sassLint(appRoot + '/styles', {
     disableTestGenerator: true,
 })
@@ -92,12 +89,15 @@ if (!isProduction) {
     tree = new LiveReload(tree, {
         target: 'index.html',
     })
+    tree = log(tree, {
+        output: 'tree',
+    })
+    tree = debug(tree, 'my-tree')
+
 }
 
-tree = log(tree, {
-    output: 'tree',
-})
-
-tree = debug(tree, 'my-tree')
+if (isProduction) {
+    tree = assetRev(tree)
+}
 
 module.exports = tree

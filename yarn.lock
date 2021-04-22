@@ -565,6 +565,25 @@ braces@^3.0.1, braces@~3.0.2:
   dependencies:
     fill-range "^7.0.1"
 
+broccoli-asset-rev@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/broccoli-asset-rev/-/broccoli-asset-rev-2.7.0.tgz#c73da1d97c4180366fa442a87624ca1b7fb99161"
+  integrity sha512-GZ7gU3Qo6HMAUqDeh1q+4UVCQPJPjCyGcpIY5s9Qp58a244FT4nZSiy8qYkVC4LLIWTZt59G7jFFsUcj/13IPQ==
+  dependencies:
+    broccoli-asset-rewrite "^1.1.0"
+    broccoli-filter "^1.2.2"
+    broccoli-persistent-filter "^1.4.3"
+    json-stable-stringify "^1.0.0"
+    minimatch "^3.0.4"
+    rsvp "^3.0.6"
+
+broccoli-asset-rewrite@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/broccoli-asset-rewrite/-/broccoli-asset-rewrite-1.1.0.tgz#77a5da56157aa318c59113245e8bafb4617f8830"
+  integrity sha1-d6XaVhV6oxjFkRMkXouvtGF/iDA=
+  dependencies:
+    broccoli-filter "^1.2.3"
+
 broccoli-caching-writer@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/broccoli-caching-writer/-/broccoli-caching-writer-3.0.3.tgz#0bd2c96a9738d6a6ab590f07ba35c5157d7db476"
@@ -628,6 +647,21 @@ broccoli-env@^0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/broccoli-env/-/broccoli-env-0.0.1.tgz#9d86e67d6b0edb76f4564e38ba23dc4c3106216a"
   integrity sha1-nYbmfWsO23b0Vk44uiPcTDEGIWo=
+
+broccoli-filter@^1.2.2, broccoli-filter@^1.2.3:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/broccoli-filter/-/broccoli-filter-1.3.0.tgz#71e3a8e32a17f309e12261919c5b1006d6766de6"
+  integrity sha512-VXJXw7eBfG82CFxaBDjYmyN7V72D4In2zwLVQJd/h3mBfF3CMdRTsv2L20lmRTtCv1sAHcB+LgMso90e/KYiLw==
+  dependencies:
+    broccoli-kitchen-sink-helpers "^0.3.1"
+    broccoli-plugin "^1.0.0"
+    copy-dereference "^1.0.0"
+    debug "^2.2.0"
+    mkdirp "^0.5.1"
+    promise-map-series "^0.2.1"
+    rsvp "^3.0.18"
+    symlink-or-copy "^1.0.1"
+    walk-sync "^0.3.1"
 
 broccoli-funnel@^2.0.0:
   version "2.0.2"
@@ -1186,6 +1220,11 @@ convert-source-map@^1.7.0:
   integrity sha512-4FJkXzKXEDB1snCFZlLP4gpC3JILicCpGbzG9f9G7tGqGCzETQ2hWPrcinA9oU4wtf2biUaEH5065UnMeR33oA==
   dependencies:
     safe-buffer "~5.1.1"
+
+copy-dereference@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/copy-dereference/-/copy-dereference-1.0.0.tgz#6b131865420fd81b413ba994b44d3655311152b6"
+  integrity sha1-axMYZUIP2BtBO6mUtE02VTERUrY=
 
 copy-descriptor@^0.1.0:
   version "0.1.1"
