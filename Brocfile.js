@@ -5,6 +5,7 @@ const babel = require('rollup-plugin-babel')
 const Rollup = require('broccoli-rollup')
 const nodeResolve = require('rollup-plugin-node-resolve')
 const commonjs = require('rollup-plugin-commonjs')
+const LiveReload = require('broccoli-livereload')
 
 const appRoot = "app"
 
@@ -53,4 +54,10 @@ const public = funnel('public', {
     annotation: "Public files"
 })
 
-module.exports = merge([html, js, css, public], { annotation: "Final output" })
+let tree = merge([html, js, css, public], { annotation: "Final output" })
+
+tree = new LiveReload(tree, {
+    target: 'index.html',
+})
+
+module.exports = tree
