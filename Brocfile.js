@@ -12,6 +12,8 @@ const esLint = require("broccoli-lint-eslint")
 const sassLint = require("broccoli-sass-lint")
 const env = require('broccoli-env').getEnv() || 'development'
 const isProduction = env === 'production'
+const CleanCss = require('broccoli-clean-css')
+const uglify = require('rollup-plugin-uglify')
 
 console.log('Environment: ' + env)
 
@@ -22,6 +24,23 @@ const html = funnel(appRoot, {
     destDir: "/",
     annotation: 'Index file',
 })
+
+const rollupPlugins = [
+    nodeResolve({
+        jsnext: true,
+        browser: true,
+    }),
+    commonjs({
+        include: 'node_modules/**',
+    }),
+    babel({
+        exclude: "node_modules/**"
+    })
+]
+
+if (isProduction) {
+    rollupPlugins.push(uglify())
+}
 
 let js = esLint(appRoot, {
     persist: true
@@ -37,18 +56,7 @@ js = new Rollup(appRoot, {
             format: "iife",
             sourcemap: !isProduction
         },
-        plugins: [
-            nodeResolve({
-                jsnext: true,
-                browser: true,
-            }),
-            commonjs({
-                include: 'node_modules/**',
-            }),
-            babel({
-                exclude: "node_modules/**"
-            })
-        ]
+        plugins: rollupPlugins
     }
 })
 
@@ -69,6 +77,10 @@ css = compileSass(
         sourceMapContents: true,
         annotation: "Sass files"
     })
+
+if (isProduction) {
+    css = new CleanCss(css)
+}
 
 const publicFolder = funnel('public', {
     annotation: "Public files"
