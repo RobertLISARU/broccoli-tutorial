@@ -1,5 +1,6 @@
 const funnel = require("broccoli-funnel")
 const merge = require("broccoli-merge-trees")
+const compileSass = require('broccoli-sass-source-maps')(require('sass'))
 
 const appRoot = "app"
 
@@ -15,12 +16,15 @@ const js = funnel(appRoot, {
     annotation: "JS files"
 })
 
-const css = funnel(appRoot, {
-    srcDir: "styles",
-    files: ["app.css"],
-    destDir: "/assets",
-    annotation: "CSS files"
-})
+const css = compileSass(
+    [appRoot],
+    "styles/app.scss",
+    "assets/app.css",
+    {
+        sourceMap: true,
+        sourceMapContents: true,
+        annotation: "Sass files"
+    })
 
 const public = funnel('public', {
     annotation: "Public files"

@@ -7,7 +7,9 @@
     "broccoli": "^3.5.1",
     "broccoli-cli": "^1.0.0",
     "broccoli-funnel": "^3.0.4",
-    "broccoli-merge-trees": "^4.2.0"
+    "broccoli-merge-trees": "^4.2.0",
+    "broccoli-sass-source-maps": "^4.0.0",
+    "sass": "^1.32.11"
   },
   "scripts": {
     "build": "broccoli build",
