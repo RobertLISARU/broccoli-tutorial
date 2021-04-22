@@ -7,6 +7,7 @@
     "@babel/core": "^7.13.16",
     "broccoli": "^3.5.1",
     "broccoli-cli": "^1.0.0",
+    "broccoli-env": "^0.0.1",
     "broccoli-funnel": "^3.0.4",
     "broccoli-lint-eslint": "^3.3.2",
     "broccoli-livereload": "^1.6.1",
@@ -23,6 +24,7 @@
   },
   "scripts": {
     "build": "broccoli build",
-    "serve": "broccoli serve"
+    "serve": "broccoli serve",
+    "build-prod": "SET BROCCOLI_ENV=production& broccoli build"
   }
 }

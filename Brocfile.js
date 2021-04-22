@@ -10,6 +10,10 @@ const log = require('broccoli-stew').log
 const debug = require('broccoli-stew').debug
 const esLint = require("broccoli-lint-eslint")
 const sassLint = require("broccoli-sass-lint")
+const env = require('broccoli-env').getEnv() || 'development'
+const isProduction = env === 'production'
+
+console.log('Environment: ' + env)
 
 const appRoot = "app"
 
@@ -31,7 +35,7 @@ js = new Rollup(appRoot, {
         output: {
             file: "assets/app.js",
             format: "iife",
-            sourcemap: true
+            sourcemap: !isProduction
         },
         plugins: [
             nodeResolve({
@@ -61,7 +65,7 @@ css = compileSass(
     "styles/app.scss",
     "assets/app.css",
     {
-        sourceMap: true,
+        sourceMap: !isProduction,
         sourceMapContents: true,
         annotation: "Sass files"
     })
@@ -72,9 +76,11 @@ const publicFolder = funnel('public', {
 
 let tree = merge([html, js, css, publicFolder], { annotation: "Final output" })
 
-tree = new LiveReload(tree, {
-    target: 'index.html',
-})
+if (!isProduction) {
+    tree = new LiveReload(tree, {
+        target: 'index.html',
+    })
+}
 
 tree = log(tree, {
     output: 'tree',

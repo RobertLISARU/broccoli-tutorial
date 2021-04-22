@@ -614,6 +614,11 @@ broccoli-debug@^0.6.5:
     symlink-or-copy "^1.1.8"
     tree-sync "^1.2.2"
 
+broccoli-env@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/broccoli-env/-/broccoli-env-0.0.1.tgz#9d86e67d6b0edb76f4564e38ba23dc4c3106216a"
+  integrity sha1-nYbmfWsO23b0Vk44uiPcTDEGIWo=
+
 broccoli-funnel@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/broccoli-funnel/-/broccoli-funnel-2.0.2.tgz#0edf629569bc10bd02cc525f74b9a38e71366a75"
