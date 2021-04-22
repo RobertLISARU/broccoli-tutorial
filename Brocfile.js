@@ -3,6 +3,8 @@ const merge = require('broccoli-merge-trees')
 const compileSass = require('broccoli-sass-source-maps')(require('sass'))
 const babel = require('rollup-plugin-babel')
 const Rollup = require('broccoli-rollup')
+const nodeResolve = require('rollup-plugin-node-resolve')
+const commonjs = require('rollup-plugin-commonjs')
 
 const appRoot = "app"
 
@@ -23,6 +25,13 @@ let js = new Rollup(appRoot, {
             sourcemap: true
         },
         plugins: [
+            nodeResolve({
+                jsnext: true,
+                browser: true,
+            }),
+            commonjs({
+                include: 'node_modules/**',
+            }),
             babel({
                 exclude: "node_modules/**"
             })

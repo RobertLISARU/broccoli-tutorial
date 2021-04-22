@@ -13,6 +13,8 @@
     "broccoli-sass-source-maps": "^4.0.0",
     "rollup": "^0.66.2",
     "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-commonjs": "^9.1.8",
+    "rollup-plugin-node-resolve": "^3.4.0",
     "sass": "^1.32.11"
   },
   "scripts": {
